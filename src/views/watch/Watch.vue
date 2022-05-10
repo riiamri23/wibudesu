@@ -30,7 +30,7 @@ export default {
       const slug = urlParams.get('slug');
 
       const res = await fetch(
-        `http://172.16.9.43:3000/anime?slug=${slug}`
+        `https://true-record-280507.uc.r.appspot.com/anime?slug=${slug}`
       );
       const data = await res.json();
       this.animeDetail = data["data"][0];

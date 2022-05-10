@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     async getAnime() {
-      const res = await fetch("http://172.16.9.43:3000/category?cat=ongoing");
+      const res = await fetch("https://true-record-280507.uc.r.appspot.com/category?cat=ongoing");
       const data = await res.json();
       this.animeList = data['data'];
     //   console.log(this.animeList);
