@@ -1,15 +1,14 @@
 <template>
-  <router-link
-    :to="`/detail?slug=${anime.slug}`"
-  >
-    <div class="bg-white shadow-md m-2">
-      <img class="w-full" :src="anime.imgUrl" alt="" />
-      <div class="text-center">
-        <p>{{ anime.title }}</p>
-        <p>{{ anime.episode }}</p>
-        <p>{{ anime.rating }}, {{ anime.date }}</p>
-      </div>
-      <!-- <router-link
+  <div class="bg-white p-6 shadow-md rounded-md">
+    <div>
+      <img :src="anime.imgUrl" alt="" />
+    </div>
+    <h3 class="text-xl text-gray-800 font-semibold mb-2">
+      {{ anime.title }}
+    </h3>
+    <p>{{ anime.episode }}</p>
+    <p>{{ anime.hari }}, {{ anime.date }}</p>
+    <router-link
       class="
         text-lg
         font-semibold
@@ -24,9 +23,8 @@
       :to="`/detail?slug=${anime.slug}`"
     >
       Nonton</router-link
-    > -->
-    </div>
-  </router-link>
+    >
+  </div>
 </template>
 
 <script>
@@ -39,7 +37,7 @@ export default {
   },
   props: ["anime"],
   created: function () {
-    // console.log(this.anime);
+    console.log(this.anime);
   },
 };
 </script>

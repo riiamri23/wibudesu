@@ -2,22 +2,22 @@
   <div class="min-h-screen bg-indigo-50">
     <Header-Nav />
     <main>
-      <div class="container w-full md:px-40 mx-auto py-20">
+      <div class="container w-full mx-auto">
+        <h1>232 Anime(s)</h1>
         <div
           class="
-            md:grid
-            lg:grid-cols-3
-            md:grid-cols-2
-            mlg:grid-cols-3
-            md:gap-10
-            space-y-6
-            md:space-y-0
-            px-10
-            md:px-0
-            mx-auto
+            grid
+            lg:grid-cols-6
+            md:grid-cols-4
+            sm:grid-cols-3
+            grid-cols-2
           "
+          v-if="!isLoading"
         >
           <Anime-Card v-for="(data, i) in animeList" :key="i" :anime="data" />
+        </div>
+        <div class="flex justify-center items-center h-screen" v-else>
+          <img src="../../assets/loading.gif" alt="Loading" />
         </div>
       </div>
     </main>
@@ -27,6 +27,7 @@
 <script>
 import AnimeCard from "../../components/AnimeCard.vue";
 import HeaderNav from "../layouts/HeaderNav.vue";
+import { URL } from "../../utils/constants";
 
 export default {
   components: { AnimeCard, HeaderNav },
@@ -34,6 +35,8 @@ export default {
   data() {
     return {
       animeList: {},
+      //set default loading true
+      isLoading: true,
     };
   },
   beforeMount() {
@@ -41,14 +44,94 @@ export default {
   },
   methods: {
     async getAnime() {
-      const res = await fetch("https://true-record-280507.uc.r.appspot.com/category?cat=ongoing");
+      this.isLoading = true;
+      const res = await fetch(`${URL}/category?cat=ongoing`);
       const data = await res.json();
-      this.animeList = data['data'];
-    //   console.log(this.animeList);
+      this.animeList = data["data"];
+      
+      this.isLoading = false;
+      //   console.log(this.animeList);
     },
   },
 };
 </script>
 
 <style>
+.intersecting-circles-spinner,
+.intersecting-circles-spinner * {
+  box-sizing: border-box;
+}
+
+.intersecting-circles-spinner {
+  height: 70px;
+  width: 70px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.intersecting-circles-spinner .spinnerBlock {
+  animation: intersecting-circles-spinners-animation 1200ms linear infinite;
+  transform-origin: center;
+  display: block;
+  height: 35px;
+  width: 35px;
+}
+
+.intersecting-circles-spinner .circle {
+  display: block;
+  border: 2px solid #ff1d5e;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.intersecting-circles-spinner .circle:nth-child(1) {
+  left: 0;
+  top: 0;
+}
+
+.intersecting-circles-spinner .circle:nth-child(2) {
+  left: calc(35px * -0.36);
+  top: calc(35px * 0.2);
+}
+
+.intersecting-circles-spinner .circle:nth-child(3) {
+  left: calc(35px * -0.36);
+  top: calc(35px * -0.2);
+}
+
+.intersecting-circles-spinner .circle:nth-child(4) {
+  left: 0;
+  top: calc(35px * -0.36);
+}
+
+.intersecting-circles-spinner .circle:nth-child(5) {
+  left: calc(35px * 0.36);
+  top: calc(35px * -0.2);
+}
+
+.intersecting-circles-spinner .circle:nth-child(6) {
+  left: calc(35px * 0.36);
+  top: calc(35px * 0.2);
+}
+
+.intersecting-circles-spinner .circle:nth-child(7) {
+  left: 0;
+  top: calc(35px * 0.36);
+}
+
+@keyframes intersecting-circles-spinners-animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 </style>

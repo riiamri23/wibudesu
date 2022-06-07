@@ -4,10 +4,9 @@ import Detail from "@/views/detail/Detail.vue";
 import Watch from "@/views/watch/Watch.vue";
 // import Contact from "@/views/Contact.vue";
 
-const routerHistory = createWebHistory();
 
 const router = createRouter({
-    history: routerHistory,
+    history: createWebHistory(),
     routes: [
       {
         path: "/",
