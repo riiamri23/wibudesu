@@ -1,10 +1,7 @@
 <template>
   <nav class="px-2 sm:px-4 py-2.5">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
-      <router-link
-        :to="`/`"
-        class="w-1/6 items-center text-xl text-[#00b1f4]"
-      >
+      <router-link :to="`/`" class="w-1/6 items-center text-xl text-[#00b1f4]">
         WibuDesu
       </router-link>
       <div class="hidden w-full md:w-auto md:flex md:justify-between md:grow">
@@ -24,12 +21,12 @@
                   py-2
                   pr-4
                   pl-3
-                  text-white
-                  bg-blue-700
+                  text-gray-700
                   rounded
-                  md:bg-transparent md:text-blue-700 md:p-0
+                  md:bg-transparen md:p-0
                   dark:text-white
                 "
+                active-class="text-blue-700 !important"
                 aria-current="page"
               >
                 Home
@@ -39,31 +36,49 @@
             </li>
             <li>
               <a
-                href="#"
+                :to="`/`"
                 class="
                   block
                   py-2
                   pr-4
                   pl-3
                   text-gray-700
-                  border-b border-gray-100
-                  hover:bg-gray-50
-                  md:hover:bg-transparent
-                  md:border-0
-                  md:hover:text-blue-700
-                  md:p-0
-                  dark:text-gray-400
-                  md:dark:hover:text-white
-                  dark:hover:bg-gray-700 dark:hover:text-white
-                  md:dark:hover:bg-transparent
-                  dark:border-gray-700
+                  rounded
+                  md:bg-transparen md:p-0
+                  dark:text-white
                 "
-                >Popular</a
+                active-class="text-blue-700 !important"
+                aria-current="page"
               >
+                Anime
+                <!--- border bottom --->
+                <div class="m-auto w-1/3 bg-[#5b43e4] h-1 rounded-sm"></div>
+              </a>
             </li>
             <li>
-              <a
-                href="#"
+              <router-link
+                :to="`/manga`"
+                class="
+                  block
+                  py-2
+                  pr-4
+                  pl-3
+                  text-gray-700
+                  rounded
+                  md:bg-transparen md:p-0
+                  dark:text-white
+                "
+                active-class="text-blue-700 !important"
+                aria-current="page"
+              >
+                Manga
+                <!--- border bottom --->
+                <div class="m-auto w-1/3 bg-[#5b43e4] h-1 rounded-sm"></div>
+              </router-link>
+            </li>
+            <li>
+              <router-link
+                :to="`/news`"
                 class="
                   block
                   py-2
@@ -82,8 +97,9 @@
                   md:dark:hover:bg-transparent
                   dark:border-gray-700
                 "
-                >Anime News</a
               >
+                Anime News
+              </router-link>
             </li>
             <li>
               <a

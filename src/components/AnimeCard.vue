@@ -7,24 +7,8 @@
       <div class="text-center">
         <p>{{ anime.title }}</p>
         <p>{{ anime.episode }}</p>
-        <p>{{ anime.rating }}, {{ anime.date }}</p>
+        <p>{{ anime.hari }}, {{ anime.date }}</p>
       </div>
-      <!-- <router-link
-      class="
-        text-lg
-        font-semibold
-        text-gray-700
-        bg-indigo-100
-        px-4
-        py-1
-        block
-        mx-auto
-        rounded-md
-      "
-      :to="`/detail?slug=${anime.slug}`"
-    >
-      Nonton</router-link
-    > -->
     </div>
   </router-link>
 </template>

@@ -1,36 +1,26 @@
 <template>
-  <div class="min-h-screen bg-indigo-50">
-    <Header-Nav />
-    <main>
-      <div class="container w-full mx-auto">
-        <h1>232 Anime(s)</h1>
-        <div
-          class="
-            grid
-            lg:grid-cols-6
-            md:grid-cols-4
-            sm:grid-cols-3
-            grid-cols-2
-          "
-          v-if="!isLoading"
-        >
-          <Anime-Card v-for="(data, i) in animeList" :key="i" :anime="data" />
-        </div>
-        <div class="flex justify-center items-center h-screen" v-else>
-          <img src="../../assets/loading.gif" alt="Loading" />
-        </div>
+  <main v-if="!isLoading">
+    <div class="container w-full mx-auto">
+      <h1>232 Anime(s)</h1>
+      <div
+        class="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2"
+      >
+        <Anime-Card v-for="(data, i) in animeList" :key="i" :anime="data" />
       </div>
-    </main>
+    </div>
+  </main>
+
+  <div class="flex justify-center items-center h-screen" v-else>
+    <img src="../../assets/loading.gif" alt="Loading" />
   </div>
 </template>
 
 <script>
 import AnimeCard from "../../components/AnimeCard.vue";
-import HeaderNav from "../layouts/HeaderNav.vue";
 import { URL } from "../../utils/constants";
 
 export default {
-  components: { AnimeCard, HeaderNav },
+  components: { AnimeCard },
   name: "Home",
   data() {
     return {
@@ -48,7 +38,7 @@ export default {
       const res = await fetch(`${URL}/category?cat=ongoing`);
       const data = await res.json();
       this.animeList = data["data"];
-      
+
       this.isLoading = false;
       //   console.log(this.animeList);
     },
